@@ -15,6 +15,7 @@ export class Keyboard {
         this.y = y;
         this.letterWidth = letterWidth;
         this.letterHeight = letterHeight;
+        this.spacing = 10
 
         this.createLetters()
     }
@@ -22,11 +23,17 @@ export class Keyboard {
     createLetters() {
         this.letters = [];
         var letterConfig = KeyboardConfig["letters"];
+        var horizontalSpacing = 0
+        var verticalSpacing = 0
+
         letterConfig.forEach(key => {
+            horizontalSpacing = this.spacing * key["x"]
+            verticalSpacing = this.spacing * key["y"]
+
             var letter = new Letter(
                 this.game, 
-                key["x"] * this.letterWidth + this.x, 
-                key["y"] * this.letterHeight + this.y, 
+                key["x"] * this.letterWidth + this.x + horizontalSpacing, 
+                key["y"] * this.letterHeight + this.y + verticalSpacing, 
                 'tile', 
                 key["letter"]
             )

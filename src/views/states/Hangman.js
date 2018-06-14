@@ -14,24 +14,49 @@ export class Hangman extends Phaser.State {
 
   preload() { 
     this.load.image('tile', './assets/images/tile2.png')
+    this.load.image('mouse', './assets/images/mouse.png')
+    this.load.image('keyboard', './assets/images/keyboard.png')
+    this.load.spritesheet('hangman', './assets/images/man.png', 75, 200, 18);
+    this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
   }
 
   create() {
     this.presenter = new HangmanPresenter()
 
-    const bannerText = 'Phaser + ES6 + Webpack'
-    let banner = this.add.text(this.world.centerX, this.game.height - 80, bannerText, {
-      font: '40px Bangers',
-      fill: '#77BFA3',
-      smoothed: false
-    })
-    banner.padding.set(10, 16);
-    banner.anchor.setTo(0.5);
-
-    this.keyboard = new Keyboard(this, 0, 150, 80, 80);  
+    this.keyboard = new Keyboard(this, 0, 150, 60, 60);  
     this.keyboard.setDelegate(this)
 
     this.wordBox = new WordBox(this, 25,0, this.presenter.word);
+
+    var sprite = this.add.sprite(800, 200, 'hangman');
+    sprite.animations.add('walk');
+    sprite.animations.play('walk', 30, true);
+
+    var graphics = game.add.graphics(0, 0);
+    
+    // draw a rectangle
+    graphics.lineStyle(2, 0xE4E4E4, 1);
+    graphics.beginFill(0xE4E4E4);
+    graphics.drawRect(0, 550, 1000, 75);
+    graphics.endFill();
+
+    graphics.beginFill(0xd7d7d7);
+    graphics.drawRect(0, 550, 250, 75);
+    graphics.endFill();
+
+    this.character = this.game.add.text(
+      80,
+      575,
+      "Controls", 
+      {
+          font: "bold 18px Arial",
+          align: "center",
+          color: "red",
+      }
+  );
+
+    sprite = this.add.sprite(270, 550, 'keyboard');
+    sprite = this.add.sprite(460, 550, 'mouse');
   }
 
   render() {
