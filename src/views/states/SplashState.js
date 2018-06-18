@@ -5,11 +5,10 @@ export default class extends Phaser.State {
   init () {}
 
   preload () {
-
-
+    
   }
 
   create () {
-    this.state.start('Game')
+    this.state.start('HangmanState')
   }
 }

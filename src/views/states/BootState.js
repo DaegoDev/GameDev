@@ -4,7 +4,7 @@ import config from '../../config';
 
 export default class extends Phaser.State {
   init() {
-    this.stage.backgroundColor = '#F2F2F2'
+    this.stage.backgroundColor = '#F6F6F6'
     this.fontsReady = false
     this.fontsLoaded = this.fontsLoaded.bind(this)
   }
@@ -27,10 +27,10 @@ export default class extends Phaser.State {
 
   render() {
     if (config.webfonts.length && this.fontsReady) {
-      this.state.start('Splash')
+      this.state.start('SplashState')
     }
     if (!config.webfonts.length) {
-      this.state.start('Splash')
+      this.state.start('SplashState')
     }
   }
 

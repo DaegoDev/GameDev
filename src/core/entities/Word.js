@@ -4,8 +4,10 @@
  * @license      Globant
  */
 
-class Word {
-  constructor () {
-
+export class Word {
+  constructor (word, definition, hints = []) {
+    this.wordText = word
+    this.definition = definition
+    this.hints = hints
   }
 }

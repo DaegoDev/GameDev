@@ -42,12 +42,15 @@ export class WordBox {
         }
     }
 
-    guessLetter(letter) {
+    guessLetter(letter)  {
         var characterCount = this.word.length;
         for (var i = 0; i < characterCount; i++) {
             if(this.word[i].toLowerCase() == letter.toLowerCase()) {
                 this.characters[i].text = this.word[i]
+                return true
             }
         }
+
+        return false
     }
 }
