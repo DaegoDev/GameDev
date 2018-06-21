@@ -9,6 +9,6 @@ export default class extends Phaser.State {
   }
 
   create () {
-    this.state.start('HangmanState')
+    this.state.start('HangmanMenuState')
   }
 }

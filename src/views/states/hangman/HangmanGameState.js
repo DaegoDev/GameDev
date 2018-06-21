@@ -5,26 +5,29 @@
  */
 
 import Phaser from 'phaser'
-import config from '../../config';
-import { Timer } from '../common/Timer'
-import { WordBox } from '../components/hangman/WordBox'
-import { HintBox } from '../common/HintBox'
-import { Keyboard } from '../components/hangman/Keyboard'
-import { Hangman } from '../components/hangman/Hangman'
-import { ControlsBanner } from '../common/ControlsBanner'
-import { HangmanPresenter } from '../../presenters/HangmanPresenter'
+import config from '../../../config';
+import { Timer } from '../../common/Timer'
+import { WordBox } from '../../components/hangman/WordBox'
+import { HintBox } from '../../common/HintBox'
+import { Keyboard } from '../../components/hangman/Keyboard'
+import { Hangman } from '../../components/hangman/Hangman'
+import { ControlsBanner } from '../../common/ControlsBanner'
+import { HangmanPresenter } from '../../../presenters/HangmanPresenter'
+import { ResourceConstants } from '../../consts/ResourceConstants'
 
-
-
-export class HangmanState extends Phaser.State {
+export class HangmanGameState extends Phaser.State {
   init() { }
 
   preload() {
-    this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
-    this.load.image('tile', './assets/images/tile2.png')
-    this.load.image('mouse', './assets/images/mouse.png')
-    this.load.image('keyboard', './assets/images/keyboard.png')
-    this.load.spritesheet('hangman', './assets/images/man.png', 75, 200, 18);
+    // this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
+    
+    for (var sprite of ResourceConstants.hangman.sprites) {
+      this.load.image(sprite.key, sprite.src)
+    }
+
+    for (var sprite of ResourceConstants.hangman.spriteSheets) {
+      this.load.spritesheet(sprite.key, sprite.src, sprite.width, sprite.height, sprite.frames)
+    }
   }
 
   create() {

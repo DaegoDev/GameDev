@@ -10,8 +10,10 @@ import Phaser from 'phaser'
 
 import BootState from './views/states/BootState'
 import SplashState from './views/states/SplashState'
-import { HangmanState } from './views/states/HangmanState'
-import { GameOverState } from './views/states/GameOverState'
+
+import { HangmanMenuState } from './views/states/hangman/HangmanMenuState'
+import { HangmanGameState } from './views/states/hangman/HangmanGameState'
+import { HangmanGameOverState } from './views/states/hangman/HangmanGameOverState'
 
 import config from './config'
 
@@ -28,8 +30,10 @@ class Game extends Phaser.Game {
 
     this.state.add('BootState', BootState, false)
     this.state.add('SplashState', SplashState, false)
-    this.state.add('HangmanState', HangmanState, false)
-    this.state.add('GameOverState', GameOverState, false)
+
+    this.state.add('HangmanMenuState', HangmanMenuState, false)
+    this.state.add('HangmanGameState', HangmanGameState, false)
+    this.state.add('HangmanGameOverState', HangmanGameOverState, false)
 
 
     // with Cordova with need to wait that the device is ready so we will call the Boot state in another file
